@@ -1,0 +1,3 @@
+venv
+.cache
+test_openai_api.py
