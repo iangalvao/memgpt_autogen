@@ -8,8 +8,7 @@ from memgpt.autogen.memgpt_agent import create_memgpt_autogen_agent_from_config
 import openai
 
 openai.api_key = "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"
-openai.base_url = "https://0.0.0.0:5000"
-
+openai.base_url = "https://api.openai.com/v1"
 
 config_list = [
     {"model": "gpt-4-1106-preview"},

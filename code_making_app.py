@@ -6,10 +6,14 @@ print(autogen.__version__)
 from memgpt.autogen.memgpt_agent import create_memgpt_autogen_agent_from_config
 
 import openai
+from dotenv import load_dotenv, find_dotenv
 
-openai.api_key = "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"
-openai.base_url = "https://0.0.0.0:5000"
-USE_MEMGPT = True
+load_dotenv(find_dotenv())
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
+openai.base_url = "https://api.openai.com/v1"
+USE_MEMGPT = False
 
 # create a config for the MemGPT AutoGen agent
 config_list_memgpt = [
@@ -20,7 +24,7 @@ config_list_memgpt = [
         # OpenAI specific
         "model_endpoint_type": "openai",
         "model_endpoint": "https://api.openai.com/v1",
-        "openai_key": "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",
+        "openai_key": OPENAI_API_KEY,
     },
 ]
 llm_config_memgpt = {"config_list": config_list_memgpt, "seed": 42}
@@ -42,9 +46,7 @@ coder = create_memgpt_autogen_agent_from_config(
 )
 
 
-config_list = [
-    {"model": "gpt-4-1106-preview"},
-]
+config_list = [{"model": "gpt-4"}, {"model": "gpt-4"}]
 
 llm_config = {"config_list": config_list, "seed": 42}
 user_proxy = autogen.UserProxyAgent(

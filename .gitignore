@@ -1,3 +1,7 @@
 venv
+autogenvenv
 .cache
 test_openai_api.py
+.env
+.cache
+.vscode
